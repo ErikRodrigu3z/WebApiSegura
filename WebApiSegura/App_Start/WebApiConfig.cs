@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WebApiSegura.Controllers;
 
 namespace WebApiSegura
 {
@@ -9,10 +10,10 @@ namespace WebApiSegura
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-
-            // Web API routes
+            // Configuración de rutas y servicios de API
             config.MapHttpAttributeRoutes();
+
+            config.MessageHandlers.Add(new TokenValidationHandler());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
